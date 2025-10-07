@@ -21,7 +21,7 @@ public class Main extends javax.swing.JFrame {
     
     double NumMinMov = 0;
     
-    boolean Stop = false;
+   // boolean Stop = false;
     
     
     
@@ -313,6 +313,11 @@ public class Main extends javax.swing.JFrame {
         btnResolver.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         btnResolver.setForeground(new java.awt.Color(204, 255, 255));
         btnResolver.setText("Resolver");
+        btnResolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResolverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -882,7 +887,68 @@ public class Main extends javax.swing.JFrame {
     
     
     
+    boolean Stop = false;
+    
+    private void MoverPlataforma (Pila Origen, Pila Destino)
+    {
+        
+        if (Stop == false)
+        {
+            
+            Nodo Plataforma = new Nodo();
+            
+            Plataforma.setDato(Origen.Peek());
+            
+            Origen.Pop();
+            
+            Destino.Push(Plataforma);
+            
+            PresentarTorreA();
+            PresentarTorreB();
+            PresentarTorreC();
+            PresentarCantMov();
+            
+            JOptionPane pane = new JOptionPane("Paso # " + lblNumMov.getText() + "\n\nQuieres continuar??",
+                                                        JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
+            
+            JDialog dialog = pane.createDialog("Numero de pasos");
+            
+            dialog.setLocation (600, 400);
+            
+            dialog.setVisible(true);
+            
+            int opt = (int) pane.getValue();
+            
+            if (opt == JOptionPane.NO_OPTION)
+            {
+                Stop = true;
+            }
+            
+        }
+        
+    }
+    
+    
+    
+    private void ResolverHanoiRecursivo(int n, Pila Origen, Pila Auxiliar, Pila Destino)
+    {
+        
+        if (n == 1)
+        {
+            MoverPlataforma(Origen, Destino);
+        } else {
+            ResolverHanoiRecursivo(n - 1, Origen, Destino, Auxiliar);
+            MoverPlataforma(Origen, Destino);
+            ResolverHanoiRecursivo(n - 1, Auxiliar, Origen, Destino);
+        }
+        
+    }
+    
+    
+    
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
+
+        ContNumMov = 0;
         
         Iniciar();
         
@@ -890,12 +956,27 @@ public class Main extends javax.swing.JFrame {
 
     
     
-    
     private void btbReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbReiniciarActionPerformed
        
         Reiniciar();
         
     }//GEN-LAST:event_btbReiniciarActionPerformed
+
+    
+    
+    private void btnResolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResolverActionPerformed
+        
+        if (!lblMinMov.getText().equals("") && PilaTorreC.getContNodo() != Objetivo)
+        {
+            
+            Reiniciar();
+            Stop = false;
+            
+            ResolverHanoiRecursivo(Objetivo, PilaTorreA, PilaTorreB, PilaTorreC);
+            
+        }
+        
+    }//GEN-LAST:event_btnResolverActionPerformed
 
     
     
