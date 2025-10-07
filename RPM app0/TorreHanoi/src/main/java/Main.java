@@ -62,6 +62,7 @@ public class Main extends javax.swing.JFrame {
     
     
     
+    // Metodo para limpiar, se usa mucho para evitar conflictos en mas codigo
     private void Limpiar()
     {
         
@@ -74,6 +75,7 @@ public class Main extends javax.swing.JFrame {
     
     
     
+    // Metodo para mostrar la cantidad de movimientos hechos por el usuario/maquina en un Label
     private void PresentarCantMov()
     {
         
@@ -431,6 +433,7 @@ public class Main extends javax.swing.JFrame {
 
     
     
+    // Metodo para mover el disco superior de torre A arriba de torre B
     private void MoverDeA_B()
     {
         
@@ -468,6 +471,7 @@ public class Main extends javax.swing.JFrame {
         
     }
     
+    // Aqui esta el boton para mover el disco superior de A a B
     private void btnA_BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA_BActionPerformed
         
         MoverDeA_B();
@@ -476,6 +480,7 @@ public class Main extends javax.swing.JFrame {
 
     
     
+    // Metodo para mover el disco superior de torre A arriba de torre C
     private void MoverDeA_C()
     {
         
@@ -523,6 +528,7 @@ public class Main extends javax.swing.JFrame {
         
     }
     
+    // Aqui esta el boton para mover el disco superior de A a C
     private void btnA_CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA_CActionPerformed
         
         MoverDeA_C();
@@ -531,6 +537,7 @@ public class Main extends javax.swing.JFrame {
 
     
     
+    // Metodo para mover el disco superior de torre B arriba de torre A
     private void MoverDeB_A()
     {
         
@@ -568,6 +575,7 @@ public class Main extends javax.swing.JFrame {
         
     }
     
+    // Aqui esta el boton para mover el disco superior de B a A
     private void btnB_AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB_AActionPerformed
         
         MoverDeB_A();
@@ -576,6 +584,7 @@ public class Main extends javax.swing.JFrame {
 
     
     
+    // Metodo para mover el disco superior de torre B arriba de torre C
     private void MoverDeB_C()
     {
         
@@ -623,6 +632,7 @@ public class Main extends javax.swing.JFrame {
         
     }
     
+    // Aqui esta el boton para mover el disco superior de B a C
     private void btnB_CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB_CActionPerformed
         
         MoverDeB_C();
@@ -631,6 +641,7 @@ public class Main extends javax.swing.JFrame {
 
     
     
+    // Metodo para mover el disco superior de torre C arriba de torre A
     private void MoverDeC_A()
     {
         
@@ -676,6 +687,7 @@ public class Main extends javax.swing.JFrame {
 
     
     
+    // Metodo para mover el disco superior de torre C arriba de torre B
     private void MoverDeC_B()
     {
         
@@ -721,7 +733,7 @@ public class Main extends javax.swing.JFrame {
 
     
     
-    
+    // Metodo para reiniciar el juego, dejando todo desde 0 sin necesidad de volver a ejecutar el programa
     private void Reiniciar()
     {
         
@@ -740,6 +752,7 @@ public class Main extends javax.swing.JFrame {
     
     
     
+    // Metodo para iniciar el juego con la cantidad de discos seleccionados en el ComboBox
     private void Iniciar()
     {
         
@@ -788,6 +801,7 @@ public class Main extends javax.swing.JFrame {
     
     
     
+    // Metodo para mostrar la torre A actualmente, se debe reiniciar con cada movimiento
     private void PresentarTorreA()
     {
         
@@ -821,6 +835,7 @@ public class Main extends javax.swing.JFrame {
     
     
     
+    // Metodo para mostrar la torre B actualmente, se debe reiniciar con cada movimiento
     private void PresentarTorreB()
     {
         
@@ -854,6 +869,7 @@ public class Main extends javax.swing.JFrame {
     
     
     
+    // Metodo para mostrar la torre C actualmente, se debe reiniciar con cada movimiento
     private void PresentarTorreC()
     {
         
@@ -889,6 +905,7 @@ public class Main extends javax.swing.JFrame {
     
     boolean Stop = false;
     
+    // 1/2 metodos necesarios para que se resuelva automaticamente, este codigo mueve el disco
     private void MoverPlataforma (Pila Origen, Pila Destino)
     {
         
@@ -930,6 +947,7 @@ public class Main extends javax.swing.JFrame {
     
     
     
+    // 2/2 metodos necesarios para que se resuelva automaticamente, este codigo usa recursividad para dar con la mejor opcion
     private void ResolverHanoiRecursivo(int n, Pila Origen, Pila Auxiliar, Pila Destino)
     {
         
@@ -946,6 +964,7 @@ public class Main extends javax.swing.JFrame {
     
     
     
+    // Aqui esta el boton para empezar el juego
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
 
         ContNumMov = 0;
@@ -956,6 +975,7 @@ public class Main extends javax.swing.JFrame {
 
     
     
+    // Aqui esta el boton para reiniciar el juego
     private void btbReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbReiniciarActionPerformed
        
         Reiniciar();
@@ -964,6 +984,7 @@ public class Main extends javax.swing.JFrame {
 
     
     
+    // Aqui esta el boton para resolver automaticamente
     private void btnResolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResolverActionPerformed
         
         if (!lblMinMov.getText().equals("") && PilaTorreC.getContNodo() != Objetivo)
